@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+.poster-img {
+    width: 100%;
+}
+
+.movie-title {
+    font-family: 'Comfortaa', cursive;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: aliceblue;
+}
+
+
+.list-group-item , .card {
+    font-size: 19px;
+    font-family: 'Kalam', cursive;
+}
+
+.jumbotron {
+    font-family: 'Merienda One', cursive;
+    text-align: center;
+}
+
+.search-input {
+    display: inline-block;
+    position: relative;
+    top: 1.5px;
+    width: 250px;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.row#movies {
+    justify-content: center;
+    text-align: center;
+}
+
+.card .row {
+    margin: 35px 25px;
+}
+
+.list-group-item {
+    background-color: #3c3c3c;
+    border: 1px solid #2d2b2b;
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:767px) {
+    .card-rating {
+        margin: 25px 0px;
+    }
+    .movie-heading {
+        margin: 15px 0px;
+    }
+}
+
+.movie-heading {
+    font-family: 'Lobster', cursive;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+
+.list-group, .rating-card, .plot-card,.movie-image {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+div#movie-card:hover {
+    transition: all 0.3s ease-out;
+    top: -2px;
+    transition: transform 0.15s ease-out;
+    box-shadow: 20px 15px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
