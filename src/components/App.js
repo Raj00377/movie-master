@@ -18,13 +18,17 @@ class App extends Component {
         .then((json) => {
             this.setState({movies:json.Search});
         })
-        .catch((err)=> {console.log(err.message);})
+        .catch((err)=> {
+            console.log(err.message);
+        })
     }
 
     render() {
         return (
             <div>
                 <Search searchMovie = {this.searchMovie}/> 
+                {
+                 this.state.movies ?  ( 
                 <div className="container-fluid">
                     <div className="row" id='movies'>
                         {
@@ -44,7 +48,8 @@ class App extends Component {
                             })
                         } 
                     </div>
-                </div>
+                </div>) : (<div><h1 className = 'movie-heading' style={{textAlign:'center'}}>Movie Not Found 🥴</h1></div>)
+                }
             </div>
         )
     }

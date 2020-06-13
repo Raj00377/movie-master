@@ -3,6 +3,7 @@ import '../index.css';
 
 class Movie extends Component {
     state = { movie: [] };
+
     componentDidMount() {
         const { imdbID } = this.props.location.state;
         fetch(`http://www.omdbapi.com/?apikey=5f0c4ce7&i=${imdbID}`)
@@ -27,28 +28,28 @@ class Movie extends Component {
                                 <h3 className='movie-heading'>{this.state.movie.Title}</h3>
                                 <ul className="list-group movie-details">
                                     <li className="list-group-item">
-                                        <strong>Genre : &nbsp;</strong> {this.state.movie.Genre}
+                                        <strong>Genre : &nbsp;</strong> {this.state.movie.Genre ? this.state.movie.Genre : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Released : &nbsp;</strong> {this.state.movie.Released}
+                                        <strong>Released : &nbsp;</strong> {this.state.movie.Released ? this.state.movie.Released : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Director : &nbsp;</strong> {this.state.movie.Director}
+                                        <strong>Director : &nbsp;</strong> {this.state.movie.Director ? this.state.movie.Director : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Writer : &nbsp;</strong> {this.state.movie.Writer}
+                                        <strong>Writer : &nbsp;</strong> {this.state.movie.Writer ? this.state.movie.Writer : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Actors : &nbsp;</strong> {this.state.movie.Actors}
+                                        <strong>Actors : &nbsp;</strong> {this.state.movie.Actors ? this.state.movie.Actors : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Rated : &nbsp;</strong> {this.state.movie.Rated}
+                                        <strong>Rated : &nbsp;</strong> {this.state.movie.Rated ? this.state.movie.Rated : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Runtime : &nbsp;</strong> {this.state.movie.Runtime}
+                                        <strong>Runtime : &nbsp;</strong> {this.state.movie.Runtime ? this.state.movie.Runtime : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Production : &nbsp;</strong> {this.state.movie.Production}
+                                        <strong>Production : &nbsp;</strong> {this.state.movie.Production ? this.state.movie.Production : <span>N/A</span>}
                                     </li>
                                     <li className="list-group-item">
                                         <strong>Awards : &nbsp;</strong> {this.state.movie.Awards}
@@ -76,16 +77,17 @@ class Movie extends Component {
                                         <strong>IMDB Votes : &nbsp;</strong> {this.state.movie.imdbVotes}
                                     </li>
                                     <li className="list-group-item">
-                                        <strong>Box Office : &nbsp;</strong> {this.state.movie.BoxOffice}
+                                        <strong>Box Office : &nbsp;</strong> {this.state.movie.BoxOffice ? this.state.movie.BoxOffice : <span>N/A</span>}
                                     </li>
                                 </ul>
                             </div>
                             <div className='col-md-8'>
                                 <div className="card-deck text-center">
                                     {
-                                        this.state.movie.Ratings.map((rating) => {
+
+                                        this.state.movie.Ratings.map((rating , index) => {
                                             return (
-                                                <div className="card rating-card" key={this.state.movie.imdbID}>
+                                                <div key={index} className="card rating-card">
                                                     <div className="card-header">{rating.Source}</div>
                                                     <div className="card-body">
                                                         <p className="card-text">{rating.Value}</p>
