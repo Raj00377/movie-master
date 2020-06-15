@@ -84,3 +84,30 @@ div#movie-card:hover {
     transition: transform 0.15s ease-out;
     box-shadow: 20px 15px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+@media(max-width:767px) {
+    .modal-body {
+        padding: 0px !important;
+    }
+}
+
+.modal-body {
+    padding: 0rem 1rem;
+}
+
+.modal-header {
+    border-bottom: 0px !important;
+    padding: 0rem 1rem !important;
+}
+
+.modal {
+    padding: 0px !important;
+}
+.modal-dialog {
+    max-width: 100%;
+}
+
+.close {
+    font-size: 54px;
+    padding: 0.7rem 1rem;
+}

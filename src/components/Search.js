@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
-
-
-
+import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 class Search extends Component {
     state = { movieQuery: '', valid: false };
