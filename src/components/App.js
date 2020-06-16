@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import '../index.css';
 import Movie from "./Movie.js";
@@ -12,13 +11,19 @@ class App extends Component {
     }
 
     searchMovie = (movieQuery) => {
-        fetch(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${movieQuery}`)
-            .then((response) => response.json())
+        fetch(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${movieQuery}`)
+            .then((response) => {
+                if (response.ok)
+                    return response.json();
+                else
+                    throw Error(`Status Code ${response.status}`);
+            })
             .then((json) => {
                 this.setState({ movies: json.Search });
             })
             .catch((err) => {
                 console.log(err.message);
+                this.setState({movies:null})
             })
     }
 
@@ -55,7 +60,7 @@ class App extends Component {
                                     })
                                 }
                             </div>
-                        </div>) : (<div><h1 className='movie-heading' style={{ textAlign: 'center' }}>Movie Not Found 🥴</h1></div>)
+                        </div>) : (<div><h1 className='movie-heading' style={{ textAlign: 'center' }}>Movie Not Found &#127917;</h1></div>)
                 }
                 {
                     this.state.clicked_1 ? <Movie imdbID={this.state.id} /> : null

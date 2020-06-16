@@ -2,11 +2,22 @@ import React, { Component } from "react";
 import { UncontrolledPopover, PopoverBody } from 'reactstrap';
 
 class Search extends Component {
-    state = { movieQuery: '', valid: false };
+    state = { movieQuery: '', valid: false, onlyCharAndNum: false };
+
+
+    validation() {
+        const regex = /^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$/;
+        const onlyCharAndNum = regex.test(event.target.value);
+        this.setState({ onlyCharAndNum });
+    }
     searchQuery = (event) => {
         this.setState({ movieQuery: event.target.value });
-        if (event.target.value.length > 2) {
-            this.setState({ valid: true });
+        if (event.target.value.length > 2 && event.target.value!=" ") {
+            this.validation();
+            if (this.state.onlyCharAndNum)
+                this.setState({ valid: true });
+            else
+                this.setState({ valid: false })
         }
         else {
             this.setState({ valid: false });
@@ -14,7 +25,7 @@ class Search extends Component {
     }
 
     handleKeyPress = (event) => {
-        if (event.target.value.length > 2) {
+        if (this.state.valid) {
             if (event.key === "Enter") {
                 this.props.searchMovie(this.state.movieQuery);
             }
@@ -36,7 +47,7 @@ class Search extends Component {
                     />
                     <button className="btn btn-primary my-2" disabled={!this.state.valid} onClick={() => this.props.searchMovie(this.state.movieQuery)}>Search</button>
                     {this.state.valid ? null : <UncontrolledPopover trigger="legacy" placement="bottom" target="PopoverFocus">
-                        <PopoverBody style={{fontFamily:"Merienda One",fontSize:'15px'}}>Enter atleast 3 letters to search</PopoverBody>
+                        <PopoverBody style={{ fontFamily: "Merienda One", fontSize: '15px' }}>Enter atleast 3 letters to search</PopoverBody>
                     </UncontrolledPopover>}
                 </div>
             </div>

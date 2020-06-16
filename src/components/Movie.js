@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../index.css';
 
 class Movie extends Component {
@@ -8,8 +8,13 @@ class Movie extends Component {
     componentDidMount() {
         if (this.props.imdbID.trim() == "") return null;
         const { imdbID } = this.props;
-        fetch(`http://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${imdbID}`)
-            .then((response) => { return response.json(); })
+        fetch(`https://www.omdbapi.com/?apikey=${process.env.API_KEY}&i=${imdbID}`)
+            .then((response) => {
+                if (response.ok)
+                    return response.json();
+                else
+                    throw Error(`Status Code ${response.status}`);
+            })
             .then((json) => {
                 this.setState({ movie: json });
             })

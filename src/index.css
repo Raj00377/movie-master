@@ -79,10 +79,12 @@
 }
 
 div#movie-card:hover {
-    transition: all 0.3s ease-out;
-    top: -2px;
-    transition: transform 0.15s ease-out;
+    top: -10px;
     box-shadow: 20px 15px 20px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div#movie-card {
+    top: 0px;
+    transition-duration: 0.5s;
 }
 
 @media(max-width:767px) {
@@ -109,5 +111,10 @@ div#movie-card:hover {
 
 .close {
     font-size: 54px;
-    padding: 0.7rem 1rem;
+    padding: 0.5rem !important;
+    position: relative;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
+
